@@ -1,0 +1,8 @@
+[Event "Broken Game"]
+[Site "Nowhere"]
+[Date "2024.99.99"]
+[White "Unknown"]
+[Black "Unknown"]
+[Result "*"]
+
+1. e4 e5 2. Nf3 ZZZ_ILLEGAL_MOVE 3. Bc4
