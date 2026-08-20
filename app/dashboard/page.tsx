@@ -187,68 +187,70 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-3.5 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
               href="/library"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 text-xs font-semibold"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 text-xs font-semibold shrink-0"
+              title="Back to Library"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Library</span>
+              <span className="hidden md:inline">Library</span>
             </Link>
 
-            <div>
-              <span className="text-base font-black text-white flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-emerald-400" />
-                <span>Performance Dashboard</span>
+            <div className="min-w-0">
+              <span className="text-sm sm:text-base font-black text-white flex items-center gap-1.5 sm:gap-2 truncate">
+                <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
+                <span className="truncate">Dashboard</span>
               </span>
-              <p className="text-xs text-slate-400">
+              <p className="text-[10px] sm:text-xs text-slate-400 truncate">
                 Calculated on-device from your local library
               </p>
             </div>
           </div>
 
-          <nav className="flex items-center gap-2 text-sm text-slate-300">
+          <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-slate-300">
             <Link
               href="/review"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Review
             </Link>
             <Link
               href="/library"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Library
             </Link>
             <Link
               href="/trainer"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Trainer
             </Link>
             <button
               onClick={() => setShowSettings(true)}
-              className="px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold text-slate-400 cursor-pointer"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold text-slate-400 cursor-pointer"
               aria-label="Open settings dialog"
+              title="Settings"
             >
               <Settings className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Settings</span>
+              <span className="hidden md:inline">Settings</span>
             </button>
           </nav>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
         {!analytics || games.length === 0 ? (
-          <div className="p-12 rounded-3xl glass-card border border-slate-800 text-center space-y-4 max-w-lg mx-auto">
-            <div className="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 mx-auto">
+          <div className="p-8 sm:p-12 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 text-center space-y-4 max-w-lg mx-auto">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 mx-auto">
               <BarChart3 className="w-6 h-6" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-white">No Game Data Yet</h3>
+              <h3 className="text-sm sm:text-base font-bold text-white">No Game Data Yet</h3>
               <p className="text-xs text-slate-400">
                 Review or import games to see your accuracy progression, blunder patterns, and opening win rates.
               </p>
@@ -266,11 +268,11 @@ export default function DashboardPage() {
         ) : (
           <>
             {/* Top Stat KPI Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1.5 sm:space-y-2">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
                   <span>Reviewed Games</span>
-                  <BookOpen className="w-4 h-4 text-emerald-400" />
+                  <BookOpen className="w-4 h-4 text-emerald-400 shrink-0" />
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl sm:text-3xl font-black text-white font-mono">
@@ -280,33 +282,33 @@ export default function DashboardPage() {
                     {analytics.winRate}% win rate
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[10px] sm:text-[11px] text-slate-500">
                   {analytics.wins}W · {analytics.losses}L · {analytics.draws}D
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-2">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1.5 sm:space-y-2">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
-                  <span>Average Accuracy (Lichess model)</span>
-                  <TrendingUp className="w-4 h-4 text-cyan-400" />
+                  <span className="truncate">Average Accuracy</span>
+                  <TrendingUp className="w-4 h-4 text-cyan-400 shrink-0" />
                 </div>
-                <div className="flex items-baseline gap-2">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
                   <span className="text-2xl sm:text-3xl font-black text-white font-mono">
                     {analytics.avgWhiteAcc.toFixed(1)}%
                   </span>
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-slate-400 truncate">
                     / {analytics.avgBlackAcc.toFixed(1)}% (B)
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[10px] sm:text-[11px] text-slate-500">
                   Avg ACPL: {analytics.avgWhiteAcpl.toFixed(0)}cp
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-2">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1.5 sm:space-y-2">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
-                  <span>Blunders & Mistakes</span>
-                  <AlertOctagon className="w-4 h-4 text-rose-400" />
+                  <span>Blunders &amp; Mistakes</span>
+                  <AlertOctagon className="w-4 h-4 text-rose-400 shrink-0" />
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl sm:text-3xl font-black text-rose-300 font-mono">
@@ -318,15 +320,15 @@ export default function DashboardPage() {
                     ({analytics.classificationCounts.blunder} Blunders)
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[10px] sm:text-[11px] text-slate-500 truncate">
                   {analytics.classificationCounts.miss} Misses · {analytics.classificationCounts.mistake} Mistakes
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-2">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1.5 sm:space-y-2">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
-                  <span>Brilliant & Great Moves</span>
-                  <Sparkles className="w-4 h-4 text-teal-400" />
+                  <span>Brilliant &amp; Great Moves</span>
+                  <Sparkles className="w-4 h-4 text-teal-400 shrink-0" />
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl sm:text-3xl font-black text-teal-300 font-mono">
@@ -337,14 +339,14 @@ export default function DashboardPage() {
                     ({analytics.classificationCounts.brilliant} Brilliant !!)
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[10px] sm:text-[11px] text-slate-500">
                   {analytics.classificationCounts.great} Great moves found
                 </p>
               </div>
             </div>
 
             {/* Accuracy Progression Timeline Chart */}
-            <div className="p-6 rounded-3xl glass-card border border-slate-800 space-y-4">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h2 className="text-sm font-black text-white flex items-center gap-2">
@@ -356,7 +358,7 @@ export default function DashboardPage() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4 text-xs font-semibold">
+                <div className="flex items-center gap-3 sm:gap-4 text-xs font-semibold flex-wrap">
                   <span className="flex items-center gap-1.5 text-emerald-400">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                     <span>White Accuracy</span>

@@ -318,67 +318,69 @@ export default function TrainerPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-3.5 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
               href="/"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 text-xs font-semibold"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 text-xs font-semibold shrink-0"
+              title="Back to Home"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Home</span>
+              <span className="hidden md:inline">Home</span>
             </Link>
 
-            <div>
-              <span className="text-base font-black text-white flex items-center gap-2">
-                <RotateCcw className="w-5 h-5 text-emerald-400" />
-                <span>Blunder Trainer (SM-2 Spaced Repetition)</span>
+            <div className="min-w-0">
+              <span className="text-sm sm:text-base font-black text-white flex items-center gap-1.5 sm:gap-2 truncate">
+                <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
+                <span className="truncate">Blunder Trainer</span>
               </span>
-              <p className="text-xs text-slate-400">
-                Turn your own blunders into interactive flashcards
+              <p className="text-[10px] sm:text-xs text-slate-400 truncate">
+                Turn your blunders into interactive flashcards
               </p>
             </div>
           </div>
 
-          <nav className="flex items-center gap-2 text-sm text-slate-300">
+          <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-slate-300">
             <Link
               href="/review"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Review
             </Link>
             <Link
               href="/library"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Library
             </Link>
             <Link
               href="/dashboard"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Dashboard
             </Link>
             <button
               onClick={() => setShowSettings(true)}
-              className="px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold text-slate-400 cursor-pointer"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold text-slate-400 cursor-pointer"
               aria-label="Open settings dialog"
+              title="Settings"
             >
               <Settings className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Settings</span>
+              <span className="hidden md:inline">Settings</span>
             </button>
           </nav>
         </div>
       </header>
 
       {/* Main Workspace */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
         {/* If Active Practice Session */}
         {isSessionActive && !isSessionFinished && currentCard && (
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 items-start max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
             {/* Board Container */}
-            <div className="flex flex-col items-center gap-3 w-full max-w-[540px] mx-auto">
-              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-950 select-none touch-none">
+            <div className="flex flex-col items-center gap-3 w-full max-w-[340px] xs:max-w-[420px] sm:max-w-[540px] mx-auto">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-slate-800 bg-slate-950 select-none touch-none">
                 <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
                   {ranks.map((rank, rankIdx) =>
                     files.map((file, fileIdx) => {
@@ -439,7 +441,7 @@ export default function TrainerPage() {
             </div>
 
             {/* Session Practice Panel */}
-            <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-5">
+            <div className="glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-4 sm:space-y-5">
               {/* Progress & Card Counter */}
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -447,14 +449,14 @@ export default function TrainerPage() {
                 </span>
                 <button
                   onClick={() => setIsSessionActive(false)}
-                  className="text-xs text-slate-400 hover:text-white font-semibold"
+                  className="text-xs text-slate-400 hover:text-white font-semibold cursor-pointer"
                 >
                   Exit Session
                 </button>
               </div>
 
               {/* Card Context */}
-              <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-2">
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-white">
                     {orientation === 'white' ? 'White' : 'Black'} to move
@@ -483,7 +485,7 @@ export default function TrainerPage() {
 
               {/* Move Feedback Banner */}
               <div
-                className={`p-3.5 rounded-2xl border text-xs font-medium flex items-start gap-2.5 transition-all ${
+                className={`p-3 sm:p-3.5 rounded-2xl border text-xs font-medium flex items-start gap-2.5 transition-all ${
                   feedback === 'correct'
                     ? 'bg-emerald-950/70 border-emerald-500/50 text-emerald-200'
                     : feedback === 'wrong'
@@ -521,10 +523,10 @@ export default function TrainerPage() {
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block text-center">
                     How easy was this puzzle?
                   </span>
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 xs:grid-cols-4 gap-2">
                     <button
                       onClick={() => handleGradeCard('again')}
-                      className="p-2.5 rounded-xl bg-rose-950/60 hover:bg-rose-900 border border-rose-800 text-center text-rose-200 transition-colors"
+                      className="p-2 sm:p-2.5 rounded-xl bg-rose-950/60 hover:bg-rose-900 border border-rose-800 text-center text-rose-200 transition-colors cursor-pointer"
                     >
                       <span className="block text-xs font-black">Again</span>
                       <span className="block text-[10px] text-rose-400 mt-0.5">&lt; 1 day</span>
@@ -532,7 +534,7 @@ export default function TrainerPage() {
 
                     <button
                       onClick={() => handleGradeCard('hard')}
-                      className="p-2.5 rounded-xl bg-amber-950/60 hover:bg-amber-900 border border-amber-800 text-center text-amber-200 transition-colors"
+                      className="p-2 sm:p-2.5 rounded-xl bg-amber-950/60 hover:bg-amber-900 border border-amber-800 text-center text-amber-200 transition-colors cursor-pointer"
                     >
                       <span className="block text-xs font-black">Hard</span>
                       <span className="block text-[10px] text-amber-400 mt-0.5">1–2 d</span>
@@ -540,7 +542,7 @@ export default function TrainerPage() {
 
                     <button
                       onClick={() => handleGradeCard('good')}
-                      className="p-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-800 text-center text-emerald-200 transition-colors"
+                      className="p-2 sm:p-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-800 text-center text-emerald-200 transition-colors cursor-pointer"
                     >
                       <span className="block text-xs font-black">Good</span>
                       <span className="block text-[10px] text-emerald-400 mt-0.5">3–6 d</span>
@@ -548,7 +550,7 @@ export default function TrainerPage() {
 
                     <button
                       onClick={() => handleGradeCard('easy')}
-                      className="p-2.5 rounded-xl bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-800 text-center text-cyan-200 transition-colors"
+                      className="p-2 sm:p-2.5 rounded-xl bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-800 text-center text-cyan-200 transition-colors cursor-pointer"
                     >
                       <span className="block text-xs font-black">Easy</span>
                       <span className="block text-[10px] text-cyan-400 mt-0.5">7–14 d</span>
@@ -562,12 +564,12 @@ export default function TrainerPage() {
 
         {/* If Session Finished Screen */}
         {isSessionActive && isSessionFinished && (
-          <div className="p-12 rounded-3xl glass-card border border-slate-800 text-center space-y-5 max-w-lg mx-auto animate-in zoom-in-95">
-            <div className="w-16 h-16 rounded-3xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto">
-              <Sparkles className="w-8 h-8" />
+          <div className="p-8 sm:p-12 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 text-center space-y-4 sm:space-y-5 max-w-lg mx-auto animate-in zoom-in-95">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto">
+              <Sparkles className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
             <div className="space-y-1">
-              <h2 className="text-xl font-black text-white">Practice Session Complete!</h2>
+              <h2 className="text-lg sm:text-xl font-black text-white">Practice Session Complete!</h2>
               <p className="text-xs text-slate-400">
                 You reviewed {sessionResults.length} flashcard{sessionResults.length === 1 ? '' : 's'}. Due dates have been scheduled according to the SM-2 spaced repetition algorithm.
               </p>
@@ -575,7 +577,7 @@ export default function TrainerPage() {
             <div className="pt-3 flex items-center justify-center gap-3">
               <button
                 onClick={() => setIsSessionActive(false)}
-                className="py-2.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-950/50 transition-colors"
+                className="py-2.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-950/50 transition-colors cursor-pointer"
               >
                 Back to Trainer Deck
               </button>
@@ -587,46 +589,46 @@ export default function TrainerPage() {
         {!isSessionActive && (
           <>
             {/* KPI Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
                   <span>Due Today</span>
                   <Calendar className="w-4 h-4 text-rose-400" />
                 </div>
-                <p className="text-3xl font-black font-mono text-rose-400">{stats.due}</p>
-                <p className="text-[11px] text-slate-500">Ready for review</p>
+                <p className="text-2xl sm:text-3xl font-black font-mono text-rose-400">{stats.due}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500">Ready for review</p>
               </div>
 
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
                   <span>Learning / New</span>
                   <RotateCcw className="w-4 h-4 text-amber-400" />
                 </div>
-                <p className="text-3xl font-black font-mono text-amber-400">{stats.learning}</p>
-                <p className="text-[11px] text-slate-500">&lt; 2 repetitions</p>
+                <p className="text-2xl sm:text-3xl font-black font-mono text-amber-400">{stats.learning}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500">&lt; 2 repetitions</p>
               </div>
 
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
                   <span>Mastered</span>
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 </div>
-                <p className="text-3xl font-black font-mono text-emerald-400">{stats.mastered}</p>
-                <p className="text-[11px] text-slate-500">&gt; 10 day intervals</p>
+                <p className="text-2xl sm:text-3xl font-black font-mono text-emerald-400">{stats.mastered}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500">&gt; 10 day intervals</p>
               </div>
 
-              <div className="p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 space-y-1">
                 <div className="flex items-center justify-between text-slate-400 text-xs font-semibold">
                   <span>Total Deck</span>
                   <Layers className="w-4 h-4 text-cyan-400" />
                 </div>
-                <p className="text-3xl font-black font-mono text-white">{stats.total}</p>
-                <p className="text-[11px] text-slate-500">Blunder flashcards</p>
+                <p className="text-2xl sm:text-3xl font-black font-mono text-white">{stats.total}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500">Blunder flashcards</p>
               </div>
             </div>
 
             {/* Quick Actions Bar */}
-            <div className="p-5 rounded-3xl glass-card border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="space-y-0.5">
                 <h3 className="text-sm font-black text-white">Practice Session</h3>
                 <p className="text-xs text-slate-400">
@@ -636,27 +638,27 @@ export default function TrainerPage() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2.5">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
                 <button
                   onClick={handleStartDueSession}
                   disabled={cards.length === 0}
-                  className="py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 text-xs font-extrabold shadow-lg shadow-emerald-950/40 flex items-center gap-2 transition-all cursor-pointer"
+                  className="flex-1 sm:flex-initial py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 text-xs font-extrabold shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <Play className="w-4 h-4 fill-slate-950" />
-                  <span>{stats.due > 0 ? `Practice Due Cards (${stats.due})` : 'Practice Deck'}</span>
+                  <Play className="w-4 h-4 fill-slate-950 shrink-0" />
+                  <span>{stats.due > 0 ? `Practice Due (${stats.due})` : 'Practice Deck'}</span>
                 </button>
 
                 <button
                   onClick={handleStartAllSession}
                   disabled={cards.length === 0}
-                  className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 text-xs font-bold border border-slate-700 transition-colors"
+                  className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 text-xs font-bold border border-slate-700 transition-colors cursor-pointer"
                 >
                   Practice All ({cards.length})
                 </button>
 
                 <button
                   onClick={handleGenerateFromLibrary}
-                  className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors"
+                  className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors cursor-pointer"
                 >
                   Generate from Library
                 </button>

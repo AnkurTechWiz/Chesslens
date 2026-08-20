@@ -40,14 +40,15 @@ export const BoardControls: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-900/80 rounded-2xl border border-slate-800 shadow-lg w-full">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-900/80 rounded-2xl border border-slate-800 shadow-lg w-full">
       {/* Playback navigation buttons */}
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center justify-center gap-1 sm:gap-1.5 w-full sm:w-auto">
         <button
           onClick={firstMove}
           disabled={currentPly === 0}
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+          className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all cursor-pointer"
           title="First move (Home / ↑)"
+          aria-label="First move"
         >
           <ChevronFirst className="w-4 h-4" />
         </button>
@@ -55,30 +56,32 @@ export const BoardControls: React.FC = () => {
         <button
           onClick={prevMove}
           disabled={currentPly === 0}
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+          className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all cursor-pointer"
           title="Previous move (←)"
+          aria-label="Previous move"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         <button
           onClick={togglePlay}
           disabled={totalPlies === 0}
-          className={`px-4 py-2 rounded-xl font-semibold text-xs flex items-center gap-1.5 transition-all shadow-md ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-semibold text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer ${
             isPlaying
               ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-amber-500/20'
               : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-emerald-500/20'
           } disabled:opacity-40 disabled:hover:bg-emerald-500`}
           title="Autoplay (Space)"
+          aria-label={isPlaying ? 'Pause autoplay' : 'Start autoplay'}
         >
           {isPlaying ? (
             <>
-              <Pause className="w-4 h-4 fill-current" />
+              <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
               <span>Pause</span>
             </>
           ) : (
             <>
-              <Play className="w-4 h-4 fill-current" />
+              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
               <span>Play</span>
             </>
           )}
@@ -87,31 +90,33 @@ export const BoardControls: React.FC = () => {
         <button
           onClick={nextMove}
           disabled={totalPlies === 0 || currentPly >= totalPlies}
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+          className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all cursor-pointer"
           title="Next move (→)"
+          aria-label="Next move"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         <button
           onClick={lastMove}
           disabled={totalPlies === 0 || currentPly >= totalPlies}
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+          className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent transition-all cursor-pointer"
           title="Last move (End / ↓)"
+          aria-label="Last move"
         >
           <ChevronLast className="w-4 h-4" />
         </button>
       </div>
 
       {/* Speed & utilities buttons */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto">
         {/* Speed pills */}
-        <div className="flex items-center bg-slate-950/60 p-1 rounded-xl border border-slate-800/80">
+        <div className="flex items-center bg-slate-950/60 p-0.5 sm:p-1 rounded-xl border border-slate-800/80">
           {speeds.map((s) => (
             <button
               key={s.value}
               onClick={() => setAutoplaySpeed(s.value)}
-              className={`px-2 py-1 rounded-lg text-[11px] font-semibold transition-all ${
+              className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer ${
                 autoplaySpeed === s.value
                   ? 'bg-slate-800 text-emerald-400 shadow-sm'
                   : 'text-slate-400 hover:text-slate-200'
@@ -125,23 +130,25 @@ export const BoardControls: React.FC = () => {
         {/* Flip button */}
         <button
           onClick={toggleFlip}
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all border border-slate-800/60"
+          className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all border border-slate-800/60 cursor-pointer"
           title="Flip board (f)"
+          aria-label="Flip board orientation"
         >
-          <RotateCcw className="w-4 h-4" />
+          <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </button>
 
         {/* Mute button */}
         <button
           onClick={toggleMute}
-          className={`p-2 rounded-xl transition-all border border-slate-800/60 ${
+          className={`p-1.5 sm:p-2 rounded-xl transition-all border border-slate-800/60 cursor-pointer ${
             isMuted
               ? 'text-red-400 hover:text-red-300 hover:bg-red-950/40'
               : 'text-slate-300 hover:text-white hover:bg-slate-800'
           }`}
           title={isMuted ? 'Unmute audio' : 'Mute audio'}
+          aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}
         >
-          {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+          {isMuted ? <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
         </button>
       </div>
     </div>

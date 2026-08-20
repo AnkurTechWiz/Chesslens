@@ -30,38 +30,38 @@ export const AnalysisProgress: React.FC<AnalysisProgressProps> = ({ className = 
 
   if (status === 'analyzing' && progress) {
     return (
-      <div className={`p-4 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl space-y-3 ${className}`}>
-        <div className="flex items-center justify-between gap-2 flex-wrap">
+      <div className={`p-3 sm:p-4 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl space-y-2.5 sm:space-y-3 ${className}`}>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping shrink-0" />
             <span className="text-xs font-bold text-white tracking-tight">
               Analyzing Move {progress.ply} of {progress.total}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             {/* Follow analysis / Live playback control */}
             {isFollowingAnalysis ? (
               <button
                 onClick={pauseFollow}
-                className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-semibold transition-all cursor-pointer"
+                className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] sm:text-[10px] font-mono font-semibold transition-all cursor-pointer"
                 title="Pause live analysis playback (stay on current move)"
               >
-                <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
+                <Radio className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-400 animate-pulse shrink-0" />
                 <span>Live Playback</span>
               </button>
             ) : (
               <button
                 onClick={resumeFollow}
-                className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[10px] font-mono font-bold transition-all cursor-pointer animate-pulse shadow-sm"
+                className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[9px] sm:text-[10px] font-mono font-bold transition-all cursor-pointer animate-pulse shadow-sm"
                 title="Resume following live analysis moves on board"
               >
-                <Eye className="w-3 h-3 text-amber-400" />
+                <Eye className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-400 shrink-0" />
                 <span>Follow analysis</span>
               </button>
             )}
 
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-emerald-400 border border-slate-700 font-semibold uppercase">
+            <span className="text-[9px] sm:text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-emerald-400 border border-slate-700 font-semibold uppercase">
               {progress.currentPass === 'scan' ? 'Pass A · Scan' : 'Pass B · Verify'}
             </span>
 
@@ -93,20 +93,20 @@ export const AnalysisProgress: React.FC<AnalysisProgressProps> = ({ className = 
 
   if (status === 'done') {
     return (
-      <div className={`flex items-center justify-between p-3 rounded-2xl bg-slate-900/60 border border-slate-800 ${className}`}>
+      <div className={`flex flex-col xs:flex-row items-stretch xs:items-center justify-between gap-2.5 p-3 rounded-2xl bg-slate-900/60 border border-slate-800 ${className}`}>
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>Analysis Complete</span>
           <span className="text-slate-600">·</span>
-          <span className="text-[11px] text-slate-400 font-mono flex items-center gap-1">
-            <Cpu className="w-3 h-3 text-slate-400" />
+          <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono flex items-center gap-1">
+            <Cpu className="w-3 h-3 text-slate-400 shrink-0" />
             SF18-lite WASM
           </span>
         </div>
 
         <button
           onClick={handleStart}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-all cursor-pointer"
+          className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-all cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>Re-analyze</span>
@@ -117,7 +117,7 @@ export const AnalysisProgress: React.FC<AnalysisProgressProps> = ({ className = 
 
   if (status === 'error') {
     return (
-      <div className={`p-4 rounded-2xl bg-red-950/40 border border-red-800/80 text-red-200 space-y-2 ${className}`}>
+      <div className={`p-3.5 sm:p-4 rounded-2xl bg-red-950/40 border border-red-800/80 text-red-200 space-y-2 ${className}`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <AlertCircle className="w-4 h-4 text-red-400" />
@@ -137,13 +137,13 @@ export const AnalysisProgress: React.FC<AnalysisProgressProps> = ({ className = 
 
   // Idle state
   return (
-    <div className={`p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 ${className}`}>
+    <div className={`p-3.5 sm:p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col xs:flex-row items-stretch xs:items-center justify-between gap-3 ${className}`}>
       <div className="space-y-0.5">
         <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+          <Sparkles className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
           Stockfish Game Review
         </h4>
-        <p className="text-[11px] text-slate-400">
+        <p className="text-[10px] sm:text-[11px] text-slate-400">
           Run complete 2-pass deterministic analysis on this game
         </p>
       </div>
@@ -151,9 +151,9 @@ export const AnalysisProgress: React.FC<AnalysisProgressProps> = ({ className = 
       <button
         onClick={handleStart}
         disabled={!game || game.moves.length === 0}
-        className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-950/50 transition-all cursor-pointer shrink-0"
+        className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-950/50 transition-all cursor-pointer shrink-0"
       >
-        <Sparkles className="w-3.5 h-3.5" />
+        <Sparkles className="w-3.5 h-3.5 shrink-0" />
         <span>Start Review</span>
       </button>
     </div>

@@ -29,22 +29,22 @@ export const OpeningReportModal: React.FC<OpeningReportModalProps> = ({ isOpen, 
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="opening-report-title"
     >
-      <div className="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/80">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-              <BookOpen className="w-4 h-4" />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-800 bg-slate-900/80">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+              <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
-            <div>
-              <h2 id="opening-report-title" className="text-base font-bold text-white flex items-center gap-2">
-                <span>Opening Theory Report</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 font-mono">
+            <div className="min-w-0">
+              <h2 id="opening-report-title" className="text-sm sm:text-base font-bold text-white flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="truncate">Opening Theory</span>
+                <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 font-mono shrink-0">
                   {opening.eco || 'Custom'}
                 </span>
               </h2>
@@ -60,7 +60,7 @@ export const OpeningReportModal: React.FC<OpeningReportModalProps> = ({ isOpen, 
         </div>
 
         {/* Content */}
-        <div className="p-6 overflow-y-auto space-y-5 text-xs">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-4 sm:space-y-5 text-xs">
           {/* Opening Banner */}
           <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-950/90 to-slate-900 border border-slate-800 space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">

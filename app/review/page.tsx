@@ -158,99 +158,105 @@ function ReviewContent() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Workspace Header */}
-      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 sm:px-6 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 min-w-0">
+      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-3 sm:px-6 py-2.5 sm:py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             <Link
               href="/"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 text-xs font-semibold shrink-0"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 text-xs font-semibold shrink-0"
+              title="Back to Home"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Back</span>
+              <span className="hidden md:inline">Back</span>
             </Link>
 
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <h1 className="text-sm sm:text-base font-black text-white truncate">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h1 className="text-xs sm:text-base font-black text-white truncate max-w-[130px] xs:max-w-[200px] sm:max-w-[340px] md:max-w-none">
                   {whitePlayer} {whiteElo && `(${whiteElo})`} vs {blackPlayer}{' '}
                   {blackElo && `(${blackElo})`}
                 </h1>
                 {game?.result && (
-                  <span className="px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[10px] font-mono font-bold text-emerald-400 shrink-0">
+                  <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[9px] sm:text-[10px] font-mono font-bold text-emerald-400 shrink-0">
                     {game.result}
                   </span>
                 )}
               </div>
-              <p className="text-[11px] text-slate-400 truncate">{eventName}</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-400 truncate">{eventName}</p>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             <button
               onClick={() => setShowGuessModal(true)}
-              className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
               title="Guess the Move Quiz Mode"
+              aria-label="Guess the Move Quiz Mode"
             >
-              <Trophy className="w-3.5 h-3.5 text-amber-400" />
+              <Trophy className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span className="hidden md:inline">Quiz</span>
             </button>
 
             <button
               onClick={() => setShowOpeningModal(true)}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
               title="Opening Theory Report"
+              aria-label="Opening Theory Report"
             >
-              <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+              <BookOpen className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span className="hidden md:inline">Opening</span>
             </button>
 
             <button
               onClick={() => setShowPasteModal(true)}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
               title="Paste New PGN"
+              aria-label="Paste New PGN"
             >
-              <FileText className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="hidden sm:inline">Paste PGN</span>
+              <FileText className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="hidden md:inline">Paste PGN</span>
             </button>
 
             <button
               onClick={() => setDebugMode(!debugMode)}
-              className={`p-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
+              className={`p-1.5 sm:p-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 debugMode
                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
                   : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
               }`}
               title="Toggle ?debug=1 HUD"
+              aria-label="Toggle Debug HUD"
             >
-              <Bug className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Debug</span>
+              <Bug className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden lg:inline">Debug</span>
             </button>
 
             <button
               onClick={toggleEngineLines}
-              className={`p-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
+              className={`p-1.5 sm:p-2 rounded-xl border text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 showEngineLines
                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
                   : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
               }`}
               title="Toggle Live Stockfish Lines"
+              aria-label="Toggle Live Stockfish Lines"
             >
-              <Cpu className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Engine</span>
+              <Cpu className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden lg:inline">Engine</span>
             </button>
 
             <button
               onClick={() => setShowSettingsModal(true)}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
               title="Settings"
               aria-label="Open Settings"
             >
-              <Settings className="w-3.5 h-3.5 text-slate-400" />
-              <span className="hidden lg:inline">Settings</span>
+              <Settings className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <span className="hidden xl:inline">Settings</span>
             </button>
 
-            <div className="hidden xl:flex items-center gap-1.5 text-xs text-slate-400 border-l border-slate-800 pl-3">
+            <div className="hidden 2xl:flex items-center gap-1.5 text-xs text-slate-400 border-l border-slate-800 pl-3">
               <Link
                 href="/library"
                 className="px-2.5 py-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition-colors"
@@ -273,10 +279,12 @@ function ReviewContent() {
 
             <button
               onClick={handleShare}
-              className="px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all flex items-center gap-1.5 shadow-lg shadow-emerald-950/40 cursor-pointer"
+              className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all flex items-center gap-1 sm:gap-1.5 shadow-lg shadow-emerald-950/40 cursor-pointer shrink-0"
+              title="Share Review URL"
+              aria-label="Share Review URL"
             >
-              {copied ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Link Copied!' : 'Share'}</span>
+              {copied ? <Check className="w-3.5 h-3.5 shrink-0" /> : <Share2 className="w-3.5 h-3.5 shrink-0" />}
+              <span className="hidden xs:inline">{copied ? 'Copied!' : 'Share'}</span>
             </button>
           </div>
         </div>
@@ -284,8 +292,8 @@ function ReviewContent() {
 
       {/* Parse Error Notice (if any) */}
       {gameError && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 w-full">
-          <div className="p-4 rounded-2xl bg-red-950/60 border border-red-800/80 text-red-200 flex items-start justify-between gap-3 shadow-lg animate-in fade-in duration-200">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 pt-4 w-full">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-red-950/60 border border-red-800/80 text-red-200 flex items-start justify-between gap-3 shadow-lg animate-in fade-in duration-200">
             <div className="flex items-start gap-2.5">
               <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
               <div>
@@ -295,7 +303,7 @@ function ReviewContent() {
             </div>
             <button
               onClick={clearError}
-              className="text-xs text-red-400 hover:text-red-200 underline shrink-0 font-medium"
+              className="text-xs text-red-400 hover:text-red-200 underline shrink-0 font-medium cursor-pointer"
             >
               Dismiss
             </button>
@@ -304,20 +312,20 @@ function ReviewContent() {
       )}
 
       {/* Main Review Workspace Layout */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 items-start">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6 lg:gap-8 items-start">
           {/* Left Column: Board + EvalBar + Advantage Graph + Progress */}
-          <div className="flex flex-col items-center gap-5 w-full">
+          <div className="flex flex-col items-center gap-4 sm:gap-5 w-full">
             <ErrorBoundary fallbackTitle="Board Error">
               {/* Board Container with Side Eval Bar */}
-              <div className="flex items-center justify-center gap-3 w-full max-w-[620px]">
+              <div className="flex items-center justify-center gap-2.5 sm:gap-3 w-full max-w-[620px]">
                 {/* Vertical Eval Bar (Desktop) */}
                 <div className="hidden sm:block h-[560px] max-h-[560px]">
                   <EvalBar orientation="vertical" />
                 </div>
 
                 {/* Responsive Board with Arrow & Badge Layers */}
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 w-full">
                   {/* Horizontal Eval Bar (Mobile only) */}
                   <div className="block sm:hidden mb-2">
                     <EvalBar orientation="horizontal" />
@@ -331,7 +339,7 @@ function ReviewContent() {
             {/* Eval Graph (Advantage Timeline with classification dots) */}
             <ErrorBoundary fallbackTitle="Evaluation Graph Error">
               <div className="w-full max-w-[620px]">
-                <EvalGraph height={100} />
+                <EvalGraph height={96} />
               </div>
             </ErrorBoundary>
 

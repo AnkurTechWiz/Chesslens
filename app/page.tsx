@@ -100,22 +100,22 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 glass-panel border-b border-slate-800/80 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-900/30">
-              <span className="text-xl font-black text-slate-950">♞</span>
+      <header className="sticky top-0 z-50 glass-panel border-b border-slate-800/80 px-3.5 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-900/30 shrink-0">
+              <span className="text-lg sm:text-xl font-black text-slate-950">♞</span>
             </div>
             <div>
-              <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
+              <span className="text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1">
                 Chess<span className="text-emerald-400">Lens</span>
               </span>
-              <p className="text-xs text-slate-400">Free, Account-Free Game Review</p>
+              <p className="text-[10px] sm:text-xs text-slate-400 hidden xs:block">Free &amp; Account-Free</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs">
               <span
                 className={`w-2 h-2 rounded-full ${
                   isIsolated ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
@@ -128,42 +128,43 @@ export default function HomePage() {
               <span className="text-slate-400">{threads} cores</span>
             </div>
 
-            <nav className="flex items-center gap-1.5 text-sm text-slate-300">
+            <nav className="flex items-center gap-1 sm:gap-1.5 text-sm text-slate-300">
               <Link
                 href="/review"
-                className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold"
+                className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold"
               >
-                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Review</span>
+                <Sparkles className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span className="hidden sm:inline">Review</span>
               </Link>
               <Link
                 href="/library"
-                className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold"
+                className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold"
               >
-                <BookOpen className="w-3.5 h-3.5 text-slate-400" />
-                <span>Library</span>
+                <BookOpen className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="hidden sm:inline">Library</span>
               </Link>
               <Link
                 href="/dashboard"
-                className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold"
+                className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold"
               >
-                <BarChart3 className="w-3.5 h-3.5 text-slate-400" />
-                <span>Dashboard</span>
+                <BarChart3 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="hidden sm:inline">Dashboard</span>
               </Link>
               <Link
                 href="/trainer"
-                className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold"
+                className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold"
               >
-                <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
-                <span>Trainer</span>
+                <RotateCcw className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="hidden sm:inline">Trainer</span>
               </Link>
               <button
                 onClick={() => setShowSettings(true)}
-                className="px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold text-slate-400 cursor-pointer"
+                className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold text-slate-400 cursor-pointer"
                 aria-label="Open settings dialog"
+                title="Settings"
               >
-                <Settings className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Settings</span>
+                <Settings className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden md:inline">Settings</span>
               </button>
             </nav>
           </div>
@@ -171,41 +172,41 @@ export default function HomePage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-10 flex flex-col items-center">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 py-6 sm:py-10 flex flex-col items-center">
         {/* Hero Header */}
-        <div className="w-full max-w-3xl text-center space-y-4 mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-semibold uppercase tracking-wider shadow-inner">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>ChessLens Free &amp; Offline PWA Game Review Active</span>
+        <div className="w-full max-w-3xl text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-[11px] sm:text-xs font-semibold uppercase tracking-wider shadow-inner">
+            <Sparkles className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">ChessLens Free &amp; Offline PWA Game Review Active</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
             Review Any Game, <br />
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
               Fluid, Instant, Account-Free.
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
             Experience grandmaster-grade annotated game reviews with client-side Stockfish 18 WASM,
             eval bar, advantage graphs, coach commentary, accuracy metrics, and tactical insights.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
             <button
               onClick={() => handleSelectSample(SAMPLE_GAMES[0])}
-              className="px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-xl shadow-emerald-950/50 flex items-center gap-2 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto px-5 sm:px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs sm:text-sm shadow-xl shadow-emerald-950/50 flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>One-Click Demo: Kasparov vs Topalov 1999</span>
-              <ArrowRight className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 shrink-0" />
+              <span className="truncate">One-Click Demo: Kasparov vs Topalov</span>
+              <ArrowRight className="w-4 h-4 shrink-0" />
             </button>
 
             <Link
               href="/review"
-              className="px-5 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-bold text-sm flex items-center gap-2 transition-all"
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
             >
-              <Upload className="w-4 h-4 text-slate-400" />
+              <Upload className="w-4 h-4 text-slate-400 shrink-0" />
               <span>Review Workspace</span>
             </Link>
           </div>
@@ -213,12 +214,12 @@ export default function HomePage() {
 
         {/* Sample Game Cards */}
         <div className="w-full max-w-4xl mb-8">
-          <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3 px-1">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <PlayCircle className="w-4 h-4 text-emerald-400" />
+              <PlayCircle className="w-4 h-4 text-emerald-400 shrink-0" />
               Select a Sample Game to Review
             </span>
-            <span className="text-xs text-slate-500">Auto-loads &amp; redirects to workspace</span>
+            <span className="text-[11px] sm:text-xs text-slate-500">Auto-loads &amp; redirects to workspace</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -228,7 +229,7 @@ export default function HomePage() {
                 <button
                   key={sample.id}
                   onClick={() => handleSelectSample(sample)}
-                  className={`p-4 rounded-2xl text-left border transition-all cursor-pointer group ${
+                  className={`p-3.5 sm:p-4 rounded-2xl text-left border transition-all cursor-pointer group ${
                     isSelected
                       ? 'bg-emerald-500/15 border-emerald-500/50 shadow-md shadow-emerald-950/40'
                       : 'bg-slate-900/60 border-slate-800 hover:border-slate-700 hover:bg-slate-800/40'
@@ -271,21 +272,21 @@ export default function HomePage() {
         )}
 
         {/* PGN Paste / Import Section */}
-        <div className="w-full max-w-3xl glass-card rounded-2xl p-6 sm:p-8 space-y-6 glow-emerald mb-12">
+        <div className="w-full max-w-3xl glass-card rounded-2xl p-4 sm:p-8 space-y-5 sm:space-y-6 glow-emerald mb-10 sm:mb-12">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-400">
               <span className="font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <FileText className="w-4 h-4 text-emerald-400" />
+                <FileText className="w-4 h-4 text-emerald-400 shrink-0" />
                 Paste Custom PGN or FEN
               </span>
-              <span>Validated with pure Zod schema</span>
+              <span className="hidden sm:inline">Validated with pure Zod schema</span>
             </div>
             <textarea
               id="pgn-input"
               value={pgnInput}
               onChange={(e) => setPgnInput(e.target.value)}
               placeholder="[Event &quot;Casual Game&quot;]&#10;1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7..."
-              className="w-full h-36 bg-slate-950/70 border border-slate-800 rounded-xl p-4 text-sm font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 resize-none transition-all"
+              className="w-full h-32 sm:h-36 bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-xs sm:text-sm font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 resize-none transition-all"
             />
           </div>
 
@@ -293,14 +294,14 @@ export default function HomePage() {
             <button
               onClick={handleLoadCustomPgn}
               disabled={!pgnInput.trim()}
-              className="flex-1 py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-950 font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 transition-all cursor-pointer text-sm"
+              className="flex-1 py-3 px-5 sm:px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-950 font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 transition-all cursor-pointer text-xs sm:text-sm"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 shrink-0" />
               <span>Review Game (Analyze PGN)</span>
             </button>
 
-            <label className="py-3 px-6 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer text-sm">
-              <Upload className="w-4 h-4 text-slate-400" />
+            <label className="py-3 px-5 sm:px-6 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer text-xs sm:text-sm">
+              <Upload className="w-4 h-4 text-slate-400 shrink-0" />
               <span>Upload .pgn</span>
               <input type="file" accept=".pgn" onChange={handleFileUpload} className="hidden" />
             </label>
@@ -308,23 +309,23 @@ export default function HomePage() {
         </div>
 
         {/* Move Classifications Preview */}
-        <div className="w-full max-w-4xl space-y-4 mb-12">
+        <div className="w-full max-w-4xl space-y-3 sm:space-y-4 mb-10 sm:mb-12">
           <div className="text-center">
             <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400">
               Move Classification Engine
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5">
             {badgeOrder.map((key) => {
               const meta = CLASSIFICATION_META[key];
               return (
                 <div
                   key={key}
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all"
+                  className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all"
                 >
                   <ClassificationIcon classification={key} size="sm" />
-                  <span className="text-xs font-semibold text-slate-300">{meta.name}</span>
+                  <span className="text-[11px] sm:text-xs font-semibold text-slate-300">{meta.name}</span>
                 </div>
               );
             })}
@@ -335,34 +336,34 @@ export default function HomePage() {
         <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
         {/* Feature Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
-          <div className="glass-panel p-6 rounded-2xl space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl w-full">
+          <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-2.5 sm:space-y-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
               <Cpu className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-white text-base">Client-Side Stockfish</h3>
+            <h3 className="font-bold text-white text-sm sm:text-base">Client-Side Stockfish</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Stockfish 18 runs directly in your browser with multi-threaded Web Workers. Zero
               server lag and zero API bills.
             </p>
           </div>
 
-          <div className="glass-panel p-6 rounded-2xl space-y-3">
+          <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-2.5 sm:space-y-3">
             <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-white text-base">100% Private &amp; Local</h3>
+            <h3 className="font-bold text-white text-sm sm:text-base">100% Private &amp; Local</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               No login, no database, no tracking cookies. All your games, reviews, and blunder
               decks persist locally via IndexedDB.
             </p>
           </div>
 
-          <div className="glass-panel p-6 rounded-2xl space-y-3">
+          <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-2.5 sm:space-y-3">
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
               <Zap className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-white text-base">Spaced Repetition Practice</h3>
+            <h3 className="font-bold text-white text-sm sm:text-base">Spaced Repetition Practice</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Every blunder you make becomes an interactive retry card with SM-2 spaced repetition
               to lock in tactics forever.

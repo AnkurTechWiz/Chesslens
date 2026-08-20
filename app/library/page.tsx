@@ -192,59 +192,60 @@ export default function LibraryPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Top Header */}
-      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-900/30">
-                <span className="text-xl font-black text-slate-950">♞</span>
+      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-3.5 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <Link href="/" className="flex items-center gap-2 min-w-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-900/30 shrink-0">
+                <span className="text-lg sm:text-xl font-black text-slate-950">♞</span>
               </div>
-              <div>
-                <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
+              <div className="min-w-0">
+                <span className="text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1 truncate">
                   Chess<span className="text-emerald-400">Lens</span>
                 </span>
-                <p className="text-xs text-slate-400">Local Game Library</p>
+                <p className="text-[10px] sm:text-xs text-slate-400 truncate">Local Game Library</p>
               </div>
             </Link>
           </div>
 
-          <nav className="flex items-center gap-2 text-sm text-slate-300">
+          <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-slate-300">
             <Link
               href="/review"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Review
             </Link>
             <Link
               href="/dashboard"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Dashboard
             </Link>
             <Link
               href="/trainer"
-              className="px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors"
+              className="px-2 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1"
             >
               Trainer
             </Link>
             <button
               onClick={() => setShowSettings(true)}
-              className="px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-semibold text-slate-400 cursor-pointer"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg hover:bg-slate-800/60 hover:text-white transition-colors flex items-center gap-1 text-xs font-semibold text-slate-400 cursor-pointer"
               aria-label="Open settings dialog"
+              title="Settings"
             >
               <Settings className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Settings</span>
+              <span className="hidden md:inline">Settings</span>
             </button>
           </nav>
         </div>
       </header>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 py-6 sm:py-8 space-y-5 sm:space-y-6">
         {/* Incognito Warning Alert */}
         {isPrivateMode && (
-          <div className="p-4 rounded-2xl bg-amber-950/60 border border-amber-800/80 text-amber-200 flex items-start justify-between gap-3 shadow-lg">
-            <div className="flex items-start gap-3">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-950/60 border border-amber-800/80 text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+            <div className="flex items-start gap-2.5 sm:gap-3">
               <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-amber-300">Private Browsing Notice</h4>
@@ -255,7 +256,7 @@ export default function LibraryPage() {
             </div>
             <button
               onClick={() => exportBackup()}
-              className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold shrink-0 transition-colors"
+              className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold shrink-0 transition-colors cursor-pointer w-full sm:w-auto"
             >
               Export Now
             </button>
@@ -264,14 +265,14 @@ export default function LibraryPage() {
 
         {/* Trainer Notice Banner */}
         {trainerNotice && (
-          <div className="p-4 rounded-2xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex items-center justify-between shadow-lg animate-in fade-in">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 shadow-lg animate-in fade-in">
             <div className="flex items-center gap-2.5">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>{trainerNotice}</span>
             </div>
             <Link
               href="/trainer"
-              className="px-3 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold hover:bg-emerald-400"
+              className="px-3 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold hover:bg-emerald-400 shrink-0"
             >
               Go to Trainer
             </Link>
@@ -279,11 +280,11 @@ export default function LibraryPage() {
         )}
 
         {/* Action & Storage Bar */}
-        <div className="p-5 rounded-3xl glass-card border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <h1 className="text-lg font-black text-white flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-emerald-400" />
+              <h1 className="text-base sm:text-lg font-black text-white flex items-center gap-2">
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
                 <span>Saved Games ({games.length})</span>
               </h1>
               {quota?.isPersistent && (
@@ -293,15 +294,15 @@ export default function LibraryPage() {
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-400 flex items-center gap-2">
-              <HardDrive className="w-3.5 h-3.5 text-slate-500" />
+            <p className="text-[11px] sm:text-xs text-slate-400 flex items-center gap-2 flex-wrap">
+              <HardDrive className="w-3.5 h-3.5 text-slate-500 shrink-0" />
               <span>
                 Storage: {quota?.formattedUsage || '0 MB'} used of {quota?.formattedQuota || 'local disk'} ({quota?.percentUsed || 0}%)
               </span>
               {!quota?.isPersistent && (
                 <button
                   onClick={handleRequestPersistence}
-                  className="text-emerald-400 hover:underline font-semibold ml-1 cursor-pointer"
+                  className="text-emerald-400 hover:underline font-semibold cursor-pointer"
                 >
                   Enable Persistence
                 </button>
@@ -309,10 +310,10 @@ export default function LibraryPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full md:w-auto">
             <button
               onClick={() => openImportModal('chesscom')}
-              className="py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold shadow-lg shadow-emerald-950/40 flex items-center gap-2 transition-all cursor-pointer"
+              className="flex-1 sm:flex-initial py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Import Games</span>
@@ -321,16 +322,18 @@ export default function LibraryPage() {
             <button
               onClick={() => exportBackup()}
               disabled={games.length === 0}
-              className="py-2.5 px-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 text-xs font-bold border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="py-2.5 px-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 text-xs font-bold border border-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               title="Export all games, cards, and settings to JSON file"
             >
               <Download className="w-3.5 h-3.5 text-slate-400" />
-              <span>Export JSON</span>
+              <span className="hidden xs:inline">Export JSON</span>
+              <span className="xs:hidden">Export</span>
             </button>
 
-            <label className="py-2.5 px-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer">
+            <label className="py-2.5 px-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
               <Upload className="w-3.5 h-3.5 text-slate-400" />
-              <span>Import JSON</span>
+              <span className="hidden xs:inline">Import JSON</span>
+              <span className="xs:hidden">Import</span>
               <input
                 type="file"
                 accept=".json"

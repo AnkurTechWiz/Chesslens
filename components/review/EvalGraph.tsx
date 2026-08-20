@@ -144,10 +144,21 @@ export const EvalGraph: React.FC<EvalGraphProps> = ({
     }
   };
 
+  const handleTouch = (e: React.TouchEvent<SVGSVGElement>) => {
+    if (!svgRef.current || !e.touches[0]) return;
+    const touch = e.touches[0];
+    const rect = svgRef.current.getBoundingClientRect();
+    const relX = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    const targetPly = Math.round(relX * totalPlies);
+    setHoverPly(targetPly);
+    setTooltipPos({ x: touch.clientX - rect.left, y: touch.clientY - rect.top });
+    jumpToPly(targetPly);
+  };
+
   return (
-    <div className={`relative w-full rounded-2xl bg-slate-950/80 border border-slate-800 p-3 select-none ${className}`}>
+    <div className={`relative w-full rounded-2xl bg-slate-950/80 border border-slate-800 p-2.5 sm:p-3 select-none ${className}`}>
       {/* Title & Stats */}
-      <div className="flex items-center justify-between text-[11px] font-semibold text-slate-400 mb-1.5 px-1">
+      <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-semibold text-slate-400 mb-1.5 px-1">
         <span>Advantage Chart</span>
         <span className="font-mono text-emerald-400">
           Move {Math.ceil(currentPly / 2) || 1} · {activePoint?.evalStr || '0.0'}
@@ -155,7 +166,7 @@ export const EvalGraph: React.FC<EvalGraphProps> = ({
       </div>
 
       {/* SVG Canvas */}
-      <div className="relative w-full overflow-hidden rounded-xl bg-slate-900/60 border border-slate-800/80">
+      <div className="relative w-full overflow-hidden rounded-xl bg-slate-900/60 border border-slate-800/80 touch-none">
         <svg
           ref={svgRef}
           viewBox={`0 0 1000 ${height}`}
@@ -165,6 +176,9 @@ export const EvalGraph: React.FC<EvalGraphProps> = ({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onClick={handleClick}
+          onTouchStart={handleTouch}
+          onTouchMove={handleTouch}
+          onTouchEnd={handleMouseLeave}
         >
           <defs>
             {/* White advantage gradient */}

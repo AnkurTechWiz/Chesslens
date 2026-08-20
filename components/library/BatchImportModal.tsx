@@ -45,18 +45,18 @@ export const BatchImportModal: React.FC = () => {
     candidates.length > 0 && selectedIds.length === candidates.length;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
-        <div className="p-6 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-              <Download className="w-5 h-5" />
+        <div className="p-4 sm:p-6 border-b border-slate-800 flex items-center justify-between">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <h2 className="text-base font-black text-white">Import Games</h2>
-              <p className="text-xs text-slate-400">
-                Fetch games from public APIs and review in the background
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-base font-black text-white truncate">Import Games</h2>
+              <p className="text-[10px] sm:text-xs text-slate-400 truncate">
+                Fetch games from public APIs and review locally
               </p>
             </div>
           </div>
@@ -64,21 +64,22 @@ export const BatchImportModal: React.FC = () => {
           <button
             onClick={closeModal}
             disabled={isProcessing}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors disabled:opacity-50"
+            aria-label="Close import dialog"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors disabled:opacity-50 cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 space-y-5 overflow-y-auto flex-1">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-y-auto flex-1">
           {/* Platform Tabs */}
           {!isProcessing && (
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-slate-950/60 border border-slate-800">
                 <button
                   onClick={() => setPlatform('chesscom')}
-                  className={`py-2.5 px-4 rounded-xl text-xs font-bold transition-all ${
+                  className={`py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     platform === 'chesscom'
                       ? 'bg-emerald-500 text-slate-950 shadow-md font-black'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
@@ -88,7 +89,7 @@ export const BatchImportModal: React.FC = () => {
                 </button>
                 <button
                   onClick={() => setPlatform('lichess')}
-                  className={`py-2.5 px-4 rounded-xl text-xs font-bold transition-all ${
+                  className={`py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     platform === 'lichess'
                       ? 'bg-emerald-500 text-slate-950 shadow-md font-black'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
@@ -112,7 +113,7 @@ export const BatchImportModal: React.FC = () => {
                       platform === 'chesscom' ? 'e.g. magnuscarlsen, hikaru' : 'e.g. DrNykterstein'
                     }
                     onKeyDown={(e) => e.key === 'Enter' && fetchGames()}
-                    className="w-full px-4 py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                    className="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
                   />
                 </div>
 
@@ -121,7 +122,7 @@ export const BatchImportModal: React.FC = () => {
                   <select
                     value={count}
                     onChange={(e) => setCount(Number(e.target.value))}
-                    className="w-full px-3 py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                    className="w-full px-3 py-2 sm:py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
                   >
                     <option value={5}>5 games</option>
                     <option value={10}>10 games</option>
@@ -134,7 +135,7 @@ export const BatchImportModal: React.FC = () => {
                   <button
                     onClick={fetchGames}
                     disabled={isLoading || !username.trim()}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 transition-all cursor-pointer h-[42px]"
+                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 transition-all cursor-pointer h-[38px] sm:h-[42px]"
                   >
                     {isLoading ? (
                       <Loader2 className="w-4 h-4 animate-spin" />

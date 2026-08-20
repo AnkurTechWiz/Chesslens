@@ -165,11 +165,11 @@ export const RetryPanel: React.FC = () => {
       </div>
 
       {/* Secondary Actions */}
-      <div className="flex items-center gap-2 pt-1 border-t border-slate-800/80">
+      <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 pt-1 border-t border-slate-800/80">
         <button
           onClick={handleAddToTrainer}
           disabled={savedToTrainer}
-          className="flex-1 py-1.5 px-3 rounded-lg bg-slate-950 hover:bg-slate-800 text-[11px] font-semibold text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 border border-slate-800"
+          className="flex-1 py-2 px-3 rounded-lg bg-slate-950 hover:bg-slate-800 text-[11px] font-semibold text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 border border-slate-800 cursor-pointer"
         >
           {savedToTrainer ? (
             <>
@@ -186,7 +186,7 @@ export const RetryPanel: React.FC = () => {
 
         <button
           onClick={exitRetry}
-          className="py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-[11px] font-bold transition-all flex items-center justify-center gap-1"
+          className="py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-[11px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer"
         >
           <span>Back to Game</span>
         </button>

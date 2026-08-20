@@ -213,26 +213,26 @@ export const GuessTheMoveModal: React.FC<GuessTheMoveModalProps> = ({ isOpen, on
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="guess-move-title"
     >
       <div
         ref={modalRef}
-        className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+        className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[94vh]"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/80">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
-              <Trophy className="w-4 h-4" />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-800 bg-slate-900/80">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+              <Trophy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
-            <div>
-              <h2 id="guess-move-title" className="text-base font-bold text-white flex items-center gap-2">
-                <span>Guess the Move Quiz</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono">
-                  {side === 'w' ? 'Playing White' : 'Playing Black'}
+            <div className="min-w-0">
+              <h2 id="guess-move-title" className="text-sm sm:text-base font-bold text-white flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="truncate">Guess the Move</span>
+                <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono shrink-0">
+                  {side === 'w' ? 'White' : 'Black'}
                 </span>
               </h2>
             </div>
@@ -247,10 +247,10 @@ export const GuessTheMoveModal: React.FC<GuessTheMoveModalProps> = ({ isOpen, on
         </div>
 
         {/* Content */}
-        <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6 items-center">
+        <div className="p-3.5 sm:p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-[1fr_300px] gap-4 sm:gap-6 items-center">
           {/* Chessboard Area */}
           <div className="flex flex-col items-center">
-            <div className="relative w-full max-w-[380px] aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-950 select-none">
+            <div className="relative w-full max-w-[320px] xs:max-w-[340px] sm:max-w-[380px] aspect-square rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-slate-800 bg-slate-950 select-none">
               <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
                 {ranks.map((rank, rankIdx) =>
                   files.map((file, fileIdx) => {

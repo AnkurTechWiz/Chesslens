@@ -60,29 +60,29 @@ export const KeyMoments: React.FC<KeyMomentsProps> = ({ className = '' }) => {
             <button
               key={moment.ply}
               onClick={() => jumpToPly(moment.ply)}
-              className={`w-full p-3 rounded-xl text-left border transition-all flex items-center justify-between gap-3 group ${
+              className={`w-full p-2.5 sm:p-3 rounded-xl text-left border transition-all flex items-center justify-between gap-2.5 sm:gap-3 group cursor-pointer ${
                 isSelected
                   ? 'bg-emerald-500/15 border-emerald-500/50 shadow-md shadow-emerald-950/40 ring-1 ring-emerald-500/40'
                   : 'bg-slate-950/60 border-slate-800/80 hover:bg-slate-900 hover:border-slate-700'
               }`}
             >
-              <div className="space-y-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold font-mono text-white">
+              <div className="space-y-0.5 sm:space-y-1 min-w-0 flex-1">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-[11px] sm:text-xs font-bold font-mono text-white">
                     {movePrefix} {moment.san}
                   </span>
-                  <span className="text-[10px] text-slate-400">({isWhite ? 'White' : 'Black'})</span>
+                  <span className="text-[9px] sm:text-[10px] text-slate-400">({isWhite ? 'White' : 'Black'})</span>
 
                   <ClassificationIcon classification={moment.classification} size="sm" />
                 </div>
 
-                <p className="text-[11px] text-slate-300 truncate max-w-xs">
+                <p className="text-[10px] sm:text-[11px] text-slate-300 truncate max-w-[200px] sm:max-w-xs">
                   {moment.comment || `${moment.san} played.`}
                 </p>
               </div>
 
-              <div className="shrink-0 flex items-center gap-1 text-xs font-semibold text-slate-400 group-hover:text-emerald-400 transition-colors">
-                <span className="text-[10px] font-mono">Ply {moment.ply}</span>
+              <div className="shrink-0 flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-slate-400 group-hover:text-emerald-400 transition-colors">
+                <span className="text-[9px] sm:text-[10px] font-mono">Ply {moment.ply}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </button>

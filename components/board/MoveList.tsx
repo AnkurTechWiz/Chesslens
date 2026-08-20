@@ -83,7 +83,7 @@ export const MoveList: React.FC = () => {
       ref={containerRef}
       className="overflow-y-auto max-h-[500px] pr-1 space-y-1 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent rounded-xl"
     >
-      <div className="grid grid-cols-[3rem_1fr_1fr] gap-1 px-2 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 bg-slate-900/60 sticky top-0 z-10 backdrop-blur-md">
+      <div className="grid grid-cols-[2.25rem_1fr_1fr] sm:grid-cols-[3rem_1fr_1fr] gap-1 px-1.5 sm:px-2 py-1.5 text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 bg-slate-900/60 sticky top-0 z-10 backdrop-blur-md">
         <span>#</span>
         <span>White</span>
         <span>Black</span>
@@ -99,7 +99,7 @@ export const MoveList: React.FC = () => {
         return (
           <div
             key={pair.moveNumber}
-            className="grid grid-cols-[3rem_1fr_1fr] gap-1 items-center px-2 py-1 rounded-lg hover:bg-slate-800/40 text-xs font-mono transition-colors"
+            className="grid grid-cols-[2.25rem_1fr_1fr] sm:grid-cols-[3rem_1fr_1fr] gap-1 items-center px-1 sm:px-2 py-0.5 sm:py-1 rounded-lg hover:bg-slate-800/40 text-[11px] sm:text-xs font-mono transition-colors"
           >
             <span className="text-slate-500 font-semibold">{pair.moveNumber}.</span>
 
@@ -108,13 +108,13 @@ export const MoveList: React.FC = () => {
               <button
                 ref={isWhiteActive ? activeMoveRef : null}
                 onClick={() => pair.white && jumpToPly(pair.white.ply)}
-                className={`flex items-center justify-between px-2 py-1.5 rounded-lg text-left transition-all ${
+                className={`flex items-center justify-between px-1.5 sm:px-2 py-1 sm:py-1.5 rounded-lg text-left transition-all cursor-pointer ${
                   isWhiteActive
                     ? 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 shadow-sm'
                     : 'text-slate-200 hover:bg-slate-800 hover:text-white'
                 }`}
               >
-                <div className="flex items-center gap-1.5 truncate">
+                <div className="flex items-center gap-1 sm:gap-1.5 truncate min-w-0">
                   <span className="truncate">{pair.white.san}</span>
                   {whiteReport && (
                     <ClassificationIcon
@@ -126,7 +126,7 @@ export const MoveList: React.FC = () => {
                 </div>
 
                 {pair.white.clockMs !== undefined && (
-                  <span className="text-[10px] text-slate-400 flex items-center gap-0.5 ml-1 opacity-80 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] text-slate-400 hidden xs:flex items-center gap-0.5 ml-1 opacity-80 shrink-0">
                     <Clock className="w-2.5 h-2.5" />
                     {formatMsToClock(pair.white.clockMs)}
                   </span>
@@ -141,13 +141,13 @@ export const MoveList: React.FC = () => {
               <button
                 ref={isBlackActive ? activeMoveRef : null}
                 onClick={() => pair.black && jumpToPly(pair.black.ply)}
-                className={`flex items-center justify-between px-2 py-1.5 rounded-lg text-left transition-all ${
+                className={`flex items-center justify-between px-1.5 sm:px-2 py-1 sm:py-1.5 rounded-lg text-left transition-all cursor-pointer ${
                   isBlackActive
                     ? 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 shadow-sm'
                     : 'text-slate-200 hover:bg-slate-800 hover:text-white'
                 }`}
               >
-                <div className="flex items-center gap-1.5 truncate">
+                <div className="flex items-center gap-1 sm:gap-1.5 truncate min-w-0">
                   <span className="truncate">{pair.black.san}</span>
                   {blackReport && (
                     <ClassificationIcon
@@ -159,7 +159,7 @@ export const MoveList: React.FC = () => {
                 </div>
 
                 {pair.black.clockMs !== undefined && (
-                  <span className="text-[10px] text-slate-400 flex items-center gap-0.5 ml-1 opacity-80 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] text-slate-400 hidden xs:flex items-center gap-0.5 ml-1 opacity-80 shrink-0">
                     <Clock className="w-2.5 h-2.5" />
                     {formatMsToClock(pair.black.clockMs)}
                   </span>
